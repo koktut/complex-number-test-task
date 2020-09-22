@@ -50,7 +50,13 @@ class Complex
      */
     public function __toString()
     {
-        return sprintf('test');
+        $str = '' . $this->realPart;
+
+        if ($this->imaginaryPart) {
+            $str .= ($this->imaginaryPart > 0 ? '+' : '') . $this->imaginaryPart . 'i';
+        }
+
+        return $str;
     }
 
     /**
@@ -58,7 +64,8 @@ class Complex
      */
     public function add(Complex $complex)
     {
-
+        $this->realPart += $complex->getRealPart();
+        $this->imaginaryPart += $complex->getImaginaryPart();
     }
 
     /**
@@ -66,7 +73,8 @@ class Complex
      */
     public function sub(Complex $complex)
     {
-
+        $this->realPart -= $complex->getRealPart();
+        $this->imaginaryPart -= $complex->getImaginaryPart();
     }
 
     /**
@@ -74,7 +82,14 @@ class Complex
      */
     public function mul(Complex $complex)
     {
+        $realPart = ($this->realPart * $complex->getRealPart()) -
+            ($this->imaginaryPart * $complex->getImaginaryPart());
 
+        $imaginaryPart = ($this->getRealPart() * $complex->getImaginaryPart()) +
+            ($this->imaginaryPart * $complex->getRealPart());
+
+        $this->realPart = $realPart;
+        $this->imaginaryPart = $imaginaryPart;
     }
 
     /**
@@ -82,6 +97,16 @@ class Complex
      */
     public function div(Complex $complex)
     {
+        $delta1 = ($this->getRealPart() * $complex->getRealPart()) +
+            ($this->getImaginaryPart() * $complex->getImaginaryPart());
 
+        $delta2 = ($this->getImaginaryPart() * $complex->getRealPart()) -
+            ($this->getRealPart() * $complex->getImaginaryPart());
+
+        $delta3 = ($complex->getRealPart() * $complex->getRealPart()) +
+            ($complex->getImaginaryPart() * $complex->getImaginaryPart());
+
+        $this->realPart = $delta1 / $delta3;
+        $this->imaginaryPart = $delta2 / $delta3;
     }
 }
