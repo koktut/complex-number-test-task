@@ -1,0 +1,21 @@
+{
+    "name": "koktut/complex",
+    "description": "",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Maxim Sobin",
+            "email": "maxim.sobin@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "koktut\\complex\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4@dev"
+    }
+}
