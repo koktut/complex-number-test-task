@@ -20,10 +20,11 @@ class Complex
 
     /**
      * Complex constructor.
-     * @param $realPart
-     * @param $imaginaryPart
+     *
+     * @param float $realPart
+     * @param float $imaginaryPart
      */
-    public function __construct($realPart = 0, $imaginaryPart = 0)
+    public function __construct($realPart = 0.0, $imaginaryPart = 0.0)
     {
         $this->realPart = $realPart;
         $this->imaginaryPart = $imaginaryPart;
