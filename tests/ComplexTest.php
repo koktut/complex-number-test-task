@@ -13,11 +13,16 @@ class ComplexTest extends TestCase
         $this->assertEquals(2, $complex->getImaginaryPart());
     }
 
+    public function testFormat()
+    {
+        $this->assertEquals('1+2i', (new Complex(1, 2))->format());
+        $this->assertEquals('1-2i', (new Complex(1, -2))->format());
+        $this->assertEquals('1', (new Complex(1))->format());
+    }
+
     public function testToString()
     {
         $this->assertEquals('1+2i', '' . new Complex(1, 2));
-        $this->assertEquals('1-2i', '' . new Complex(1, -2));
-        $this->assertEquals('1', '' . new Complex(1));
     }
 
     public function testAdd()

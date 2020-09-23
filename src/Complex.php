@@ -49,7 +49,7 @@ class Complex
     /**
      * @return string
      */
-    public function __toString()
+    public function format()
     {
         $str = '' . $this->realPart;
 
@@ -58,6 +58,14 @@ class Complex
         }
 
         return $str;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->format();
     }
 
     /**
